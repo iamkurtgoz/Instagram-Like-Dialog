@@ -49,9 +49,6 @@ public class MainActivity extends AppCompatActivity implements InstaDialog.Dialo
         //new InstaDialog(MainActivity.this, arrayList).setDialogClickCallBack(this).show();
         //or
         new InstaDialog(MainActivity.this, arrayList, this)
-                .setTextTitle("Instagram Like Dialog")
-                .setTextColor(getResources().getColor(R.color.blue))
-                .setTextSize(18)
                 .setDialogCancelable(true).show();
     }
 
