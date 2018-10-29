@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.andexert.library.RippleView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_item_custom_instagram_like_dialog_row_rippleView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:rv_rippleDuration="70"
+    app:rv_color="#cccccc">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/list_item_custom_instagram_like_dialog_row_textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textStyle="normal"
+            android:padding="8dp"
+            android:textSize="17sp"
+            tools:ignore="MissingPrefix" />
+
+    </LinearLayout>
+
+</com.andexert.library.RippleView>

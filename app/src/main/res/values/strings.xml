@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">İnstagram Like Dialog</string>
+
+    <string name="follow">Takip Et</string>
+    <string name="get_profile">Profile Git</string>
+    <string name="block">Engelle</string>
+</resources>
