@@ -1,5 +1,6 @@
 # Instagram Like Dialog
 ### Use Instagram-like dialog.
+[![](https://jitpack.io/v/iamkurtgoz/Instagram-Like-Dialog.svg)](https://jitpack.io/#iamkurtgoz/Instagram-Like-Dialog)
 
 ## What Works
 
@@ -18,34 +19,26 @@ allprojects {
 ##### Step 2. Add the dependency
 ```java
 dependencies {
-   implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.1'
+   implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.2'
 }
 ```
 
 ### How to Use
 ```java
-ArrayList<CustomInstagramLikeDialogModel> arrayList = new ArrayList<>();
-        arrayList.add(new CustomInstagramLikeDialogModel(
-                getString(R.string.follow),
-                MainActivity.this
-        )); //default value, color = black, special id = -1
+    DModel[] customData = new DModel[]{
+    new DModel(getString(R.string.follow), R.drawable.instagram_icon),
+    new DModel(getString(R.string.get_profile), R.drawable.instagram_icon_2),
+    new DModel(getString(R.string.block), R.drawable.instagram_icon_3)
+    };
 
-        arrayList.add(new CustomInstagramLikeDialogModel(
-                getString(R.string.get_profile),
-                1,
-                getResources().getColor(R.color.blue)
-        )); //color = blue, special id = 1
-
-        arrayList.add(new CustomInstagramLikeDialogModel(
-                getString(R.string.block),
-                123,
-                getResources().getColor(R.color.brand_red)
-        )); //color red, special id = 123
-
-        //new InstaDialog(MainActivity.this, arrayList).setDialogClickCallBack(this).show();
-        //or
-        new InstaDialog(MainActivity.this, arrayList, this)
-                .setDialogCancelable(true).show();
+    InstaDialog.with(MainActivity.this)
+    .init(customData, this)
+    .setTitle("Instagram Dialog")
+    .setTextSize(15)
+    .setTextGravity(Gravity.START)
+    .setCancelable(true)
+    .setItemIconActive(true)
+    .show();
 ```
 ### Features
 
