@@ -1,12 +1,12 @@
 # Instagram Like Dialog
 ### Use Instagram-like dialog.
 
-##What Works
+## What Works
 
-#####You can see the same dialog on instagram. We have achieved a similar result by presenting the same image.
+##### You can see the same dialog on instagram. We have achieved a similar result by presenting the same image.
 
-###How to Import
-#####Step 1. Add the JitPack repository to your build file
+### How to Import
+##### Step 1. Add the JitPack repository to your build file
 ```java
 allprojects {
    repositories {
@@ -15,14 +15,14 @@ allprojects {
 }
 ```
 
-#####Step 2. Add the dependency
+##### Step 2. Add the dependency
 ```java
 dependencies {
    implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.1'
 }
 ```
 
-###How to Use
+### How to Use
 ```java
 ArrayList<CustomInstagramLikeDialogModel> arrayList = new ArrayList<>();
         arrayList.add(new CustomInstagramLikeDialogModel(
@@ -47,7 +47,7 @@ ArrayList<CustomInstagramLikeDialogModel> arrayList = new ArrayList<>();
         new InstaDialog(MainActivity.this, arrayList, this)
                 .setDialogCancelable(true).show();
 ```
-###Features
+### Features
 
 Function  | Description
 ------------- | -------------
@@ -58,11 +58,11 @@ setTextColor | Title color. Default black.
 setTextSize | Title text size. Default 14sp.
 
 
-###How to Result
+### How to Result
 ![](https://github.com/iamkurtgoz/Instagram-Like-Dialog/raw/master/ss/ss_device.png)
 
 
 
 
 
-###Contacts : kurtgozmehmet159@gmail.com
+### Contacts : kurtgozmehmet159@gmail.com
