@@ -11,6 +11,13 @@
         android:orientation="vertical"
         android:background="@drawable/custom_instagram_like_dialog_background">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:src="@drawable/instagram_icon_2"/>
+
         <TextView
             android:id="@+id/layout_instadialog_textTitle"
             android:layout_width="match_parent"
@@ -23,7 +30,7 @@
             android:gravity="center"
             android:maxLines="1"
             android:singleLine="true"
-            android:visibility="gone"/>
+            android:text="@string/app_name"/>
 
         <ListView
             android:id="@+id/layout_instadialog_listView"

@@ -5,51 +5,52 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.andexert.library.RippleView;
 import com.iamkurtgoz.instalikedialog.R;
-import com.iamkurtgoz.instalikedialog.list.models.CustomInstagramLikeDialogModel;
+import com.iamkurtgoz.instalikedialog.list.models.DModel;
+import com.iamkurtgoz.instalikedialog.main.Init;
 
-import java.util.ArrayList;
-
-public class CustomInstagramLikeDialogAdapter extends ArrayAdapter<CustomInstagramLikeDialogModel> {
+public class DAdapter extends ArrayAdapter<DModel> {
 
     public ClickCallBack clickCallBack;
     public interface ClickCallBack{
-        void onClickListener(CustomInstagramLikeDialogModel model, int position);
+        void onClickListener(DModel model, int position);
     }
 
     public void setClickCallBack(ClickCallBack clickCallBack) {
         this.clickCallBack = clickCallBack;
     }
 
+    private Init initDialog;
     private final LayoutInflater inflater;
     private final Context context;
     private ViewHolder holder;
-    private final ArrayList<CustomInstagramLikeDialogModel> arrayModel;
+    private DModel[] customData;
 
-    public CustomInstagramLikeDialogAdapter(Context context, ArrayList<CustomInstagramLikeDialogModel> arrayModel) {
-        super(context,0, arrayModel);
-        this.context = context;
-        this.arrayModel = arrayModel;
+    public DAdapter(Init initDialog, DModel[] customData) {
+        super(initDialog.context,0, customData);
+        this.initDialog = initDialog;
+        this.context = initDialog.context;
+        this.customData = customData;
         inflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return arrayModel.size();
+        return customData.length;
     }
 
     @Override
-    public CustomInstagramLikeDialogModel getItem(int position) {
-        return arrayModel.get(position);
+    public DModel getItem(int position) {
+        return customData[position];
     }
 
     @Override
     public long getItemId(int position) {
-        return arrayModel.get(position).hashCode();
+        return customData[position].hashCode();
     }
 
     @Override
@@ -62,6 +63,7 @@ public class CustomInstagramLikeDialogAdapter extends ArrayAdapter<CustomInstagr
             holder = new ViewHolder();
             holder.rippleView = (RippleView) convertView.findViewById(R.id.list_item_custom_instagram_like_dialog_row_rippleView);
             holder.textTitle = (TextView) convertView.findViewById(R.id.list_item_custom_instagram_like_dialog_row_textTitle);
+            holder.imgItemIcon = (ImageView) convertView.findViewById(R.id.list_item_custom_instagram_like_dialog_row_imgItemIcon);
             convertView.setTag(holder);
 
         }
@@ -70,8 +72,14 @@ public class CustomInstagramLikeDialogAdapter extends ArrayAdapter<CustomInstagr
             holder = (ViewHolder)convertView.getTag();
         }
 
-        final CustomInstagramLikeDialogModel instagramModel = arrayModel.get(position);
+        final DModel instagramModel = customData[position];
         if(instagramModel != null){
+            holder.imgItemIcon.setVisibility(initDialog.isItemIconActive() ? View.VISIBLE : View.GONE);
+            if (initDialog.isItemIconActive()){
+                holder.imgItemIcon.setImageResource(instagramModel.getIcon());
+            }
+
+            holder.textTitle.setGravity(initDialog.getTextGravity());
             holder.textTitle.setText(instagramModel.getTitle());
             holder.textTitle.setTextColor(instagramModel.getColor());
             holder.rippleView.setOnRippleCompleteListener(new RippleView.OnRippleCompleteListener() {
@@ -88,7 +96,8 @@ public class CustomInstagramLikeDialogAdapter extends ArrayAdapter<CustomInstagr
 
     private static class ViewHolder {
         RippleView rippleView;
-        TextView textTitle;;
+        ImageView imgItemIcon;
+        TextView textTitle;
 
     }
 }

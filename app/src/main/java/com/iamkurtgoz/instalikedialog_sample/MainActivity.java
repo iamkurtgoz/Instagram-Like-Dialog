@@ -2,16 +2,16 @@ package com.iamkurtgoz.instalikedialog_sample;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.iamkurtgoz.instalikedialog.list.models.CustomInstagramLikeDialogModel;
+import com.iamkurtgoz.instalikedialog.list.models.DModel;
+import com.iamkurtgoz.instalikedialog.main.Builder;
 import com.iamkurtgoz.instalikedialog.main.InstaDialog;
 
-import java.util.ArrayList;
-
-public class MainActivity extends AppCompatActivity implements InstaDialog.DialogClickCallBack {
+public class MainActivity extends AppCompatActivity implements Builder.DialogClickCallBack {
 
     private Button button;
     @Override
@@ -28,32 +28,24 @@ public class MainActivity extends AppCompatActivity implements InstaDialog.Dialo
     }
 
     private void openDialog(){
-        ArrayList<CustomInstagramLikeDialogModel> arrayList = new ArrayList<>();
-        arrayList.add(new CustomInstagramLikeDialogModel(
-                getString(R.string.follow),
-                MainActivity.this
-        )); //default value, color = black, special id = -1
+        DModel[] customData = new DModel[]{
+                new DModel(getString(R.string.follow), R.drawable.instagram_icon),
+                new DModel(getString(R.string.get_profile), R.drawable.instagram_icon_2),
+                new DModel(getString(R.string.block), R.drawable.instagram_icon_3)
+        };
 
-        arrayList.add(new CustomInstagramLikeDialogModel(
-                getString(R.string.get_profile),
-                1,
-                getResources().getColor(R.color.blue)
-        )); //color = blue, special id = 1
-
-        arrayList.add(new CustomInstagramLikeDialogModel(
-                getString(R.string.block),
-                123,
-                getResources().getColor(R.color.brand_red)
-        )); //color red, special id = 123
-
-        //new InstaDialog(MainActivity.this, arrayList).setDialogClickCallBack(this).show();
-        //or
-        new InstaDialog(MainActivity.this, arrayList, this)
-                .setDialogCancelable(true).show();
+        InstaDialog.with(MainActivity.this)
+                .init(customData, this)
+                .setTitle("Instagram Dialog")
+                .setTextSize(15)
+                .setTextGravity(Gravity.START)
+                .setCancelable(true)
+                .setItemIconActive(true)
+                .show();
     }
 
     @Override
-    public void onDialogClickListener(CustomInstagramLikeDialogModel model, int position) {
+    public void onDialogClickListener(DModel model, int position) {
         Toast.makeText(this, "Text : " + model.getTitle() + ", position : " + position, Toast.LENGTH_SHORT).show();
     }
 }

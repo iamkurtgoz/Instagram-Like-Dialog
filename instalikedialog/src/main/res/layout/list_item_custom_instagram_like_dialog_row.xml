@@ -15,10 +15,17 @@
         android:orientation="horizontal"
         android:gravity="center">
 
+        <ImageView
+            android:id="@+id/list_item_custom_instagram_like_dialog_row_imgItemIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/instagram_icon"
+            android:padding="8dp"/>
+
         <TextView
             android:id="@+id/list_item_custom_instagram_like_dialog_row_textTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:text="@string/app_name"
             android:textStyle="normal"
             android:padding="8dp"
