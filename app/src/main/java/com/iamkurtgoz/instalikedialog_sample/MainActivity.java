@@ -36,11 +36,11 @@ public class MainActivity extends AppCompatActivity implements Builder.DialogCli
 
         InstaDialog.with(MainActivity.this)
                 .init(customData, this)
-                .setTitle("Instagram Dialog")
                 .setTextSize(15)
                 .setTextGravity(Gravity.START)
                 .setCancelable(true)
                 .setItemIconActive(true)
+                .setTitleIconResource(R.drawable.instagram_icon_3)
                 .show();
     }
 

@@ -12,6 +12,7 @@
         android:background="@drawable/custom_instagram_like_dialog_background">
 
         <ImageView
+            android:id="@+id/layout_instadialog_imgTitleIcon"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_gravity="center"

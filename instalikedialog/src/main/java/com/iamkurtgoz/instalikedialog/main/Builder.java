@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -37,12 +38,20 @@ public class Builder extends Dialog {
         setCancelable(initDialog.getCancelable());
         setContentView(R.layout.layout_instadialog);
 
+        ImageView imgTitleIcon = (ImageView) findViewById(R.id.layout_instadialog_imgTitleIcon);
         ListView listView = (ListView) findViewById(R.id.layout_instadialog_listView);
         TextView textTitle = (TextView) findViewById(R.id.layout_instadialog_textTitle);
+
+        imgTitleIcon.setVisibility(initDialog.isTitleIconActive() ? View.VISIBLE : View.GONE);
+        if (initDialog.isTitleIconActive()){
+            imgTitleIcon.setImageResource(initDialog.getTitleIconResource());
+        }
+
         textTitle.setText(initDialog.getTitle());
         textTitle.setTextColor(initDialog.getTextColor());
         textTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, initDialog.getTextSize());
         textTitle.setVisibility(initDialog.getTitleActive() ? View.VISIBLE : View.GONE);
+
 
         DAdapter customAdapter = new DAdapter(initDialog, initDialog.getCustomData());
         customAdapter.setClickCallBack(new DAdapter.ClickCallBack() {

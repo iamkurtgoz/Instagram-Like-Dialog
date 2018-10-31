@@ -11,8 +11,8 @@ public class Init {
     public Context context;
     private Boolean isCancelable = true, isTitleActive = false;
     private String title = "";
-    private int textColor, textSize = 14, textGravity = Gravity.START;
-    private boolean itemIconActive = false;
+    private int textColor, textSize = 14, textGravity = Gravity.START, titleIconResource = R.drawable.instagram_icon_2;
+    private boolean titleIconActive = false, itemIconActive = false;
 
     private DModel[] customData;
     private Builder.DialogClickCallBack dialogClickCallBack;
@@ -85,6 +85,20 @@ public class Init {
 
     public boolean isItemIconActive() {
         return itemIconActive;
+    }
+
+    public boolean isTitleIconActive() {
+        return titleIconActive;
+    }
+
+    public Init setTitleIconResource(int titleIconResource) {
+        this.titleIconResource = titleIconResource;
+        this.titleIconActive = true;
+        return this;
+    }
+
+    public int getTitleIconResource() {
+        return titleIconResource;
     }
 
     public DModel[] getCustomData() {
