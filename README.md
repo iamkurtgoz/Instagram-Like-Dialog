@@ -19,7 +19,7 @@ allprojects {
 ##### Step 2. Add the dependency
 ```java
 dependencies {
-   implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.2'
+   implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.3'
 }
 ```
 
