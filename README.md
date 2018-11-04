@@ -10,36 +10,61 @@
 ##### Step 1. Add the JitPack repository to your build file
 ```java
 allprojects {
-   repositories {
-      maven { url 'https://jitpack.io' }
-   }
+repositories {
+maven { url 'https://jitpack.io' }
+}
 }
 ```
 
 ##### Step 2. Add the dependency
 ```java
 dependencies {
-   implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.3'
+implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.4'
 }
 ```
 
-### How to Use
+### How to Use Android List Dialog
 ```java
-    DModel[] customData = new DModel[]{
-    new DModel(getString(R.string.follow), R.drawable.instagram_icon),
-    new DModel(getString(R.string.get_profile), R.drawable.instagram_icon_2),
-    new DModel(getString(R.string.block), R.drawable.instagram_icon_3)
-    };
+DModel[] customData = new DModel[]{
+new DModel(getString(R.string.follow), R.drawable.instagram_icon),
+new DModel(getString(R.string.get_profile), R.drawable.instagram_icon_2),
+new DModel(getString(R.string.block), R.drawable.instagram_icon_3)
+};
 
-    InstaDialog.with(MainActivity.this)
-    .init(customData, this)
-    .setTitle("Instagram Dialog")
-    .setTextSize(15)
-    .setTextGravity(Gravity.START)
-    .setCancelable(true)
-    .setItemIconActive(true)
-    .show();
+InstaDialog.with(MainActivity.this)
+.androidList(MainActivity.this, customData)
+.setDialogClickCallBack(new BuilderListAndroid.DialogClickCallBack() {
+@Override
+public void onDialogClickListener(DModel model, int position) {
+Toast.makeText(MainActivity.this, "Text : " + model.getTitle() + ", position : " + position, Toast.LENGTH_SHORT).show();
+}
+})
+.setTextSize(15)
+.setTextGravity(Gravity.START)
+.setCancelable(true)
+.setItemIconActive(false)
+.show();
 ```
+### How to Use Android Dialog
+```java
+InstaDialog.with(MainActivity.this)
+.androidDialog("Fikrini değiştirirsen, @iamkurtgoz'e tekrar takip isteği göndermen gerekecek.", "İptal", "Kabul")
+.setProfileIconUrl("https://instagram.fist4-1.fna.fbcdn.net/vp/807d164c60a4e48041b9a095c5da5df7/5C691F53/t51.2885-19/s640x640/20838301_1915234258688325_4142410044761178112_n.jpg")
+.setDialogClickCallBack(new BuilderDialogAndroid.DialogClickCallBack() {
+@Override
+public void onDialogCancelClickListener() {
+Toast.makeText(MainActivity.this, "Cancel", Toast.LENGTH_SHORT).show();
+}
+
+@Override
+public void onDialogConfirmClickListner() {
+Toast.makeText(MainActivity.this, "Confirm", Toast.LENGTH_SHORT).show();
+}
+}).show();
+```
+
+
+
 ### Features
 
 Function  | Description
@@ -51,9 +76,11 @@ setTextColor | Title color. Default black.
 setTextSize | Title text size. Default 14sp.
 
 
-### How to Result
-![](https://github.com/iamkurtgoz/Instagram-Like-Dialog/raw/master/ss/ss_device.png)
+### How to Result Android List Dialog
+![](https://github.com/iamkurtgoz/Instagram-Like-Dialog/raw/master/ss/ss_android_list.png)
 
+### How to Result Android Dialog
+![](https://github.com/iamkurtgoz/Instagram-Like-Dialog/raw/master/ss/ss_android_dialog.png)
 
 
 

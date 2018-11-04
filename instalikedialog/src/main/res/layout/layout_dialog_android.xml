@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:orientation="vertical"
+        android:background="@drawable/custom_instagram_like_dialog_background">
+
+        <FrameLayout
+            android:id="@+id/list_dialog_android_frameContent"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp">
+
+            <com.iamkurtgoz.instalikedialog.view.CircularImageView
+                android:id="@+id/list_dialog_android_imgAvatar"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/instagram_icon_2"
+                app:civ_border="true"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="3dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                />
+
+            <ProgressBar
+                android:id="@+id/list_dialog_android_prgLoading"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"/>
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/list_dialog_android_textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:padding="6sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:maxLines="3"
+            android:text="@string/app_name"
+            android:layout_marginBottom="20dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E5E5E5"
+            android:layout_marginTop="2dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+
+            <Button
+                android:id="@+id/list_dialog_android_btnCancel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@null"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:text="İptal"/>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#E5E5E5"
+                android:layout_marginTop="2dp"/>
+
+            <Button
+                android:id="@+id/list_dialog_android_btnConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:background="@null"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textAllCaps="false"
+                android:text="Takibi Bırak"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

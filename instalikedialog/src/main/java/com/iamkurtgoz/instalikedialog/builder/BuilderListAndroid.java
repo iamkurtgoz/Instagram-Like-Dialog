@@ -1,4 +1,4 @@
-package com.iamkurtgoz.instalikedialog.main;
+package com.iamkurtgoz.instalikedialog.builder;
 
 import android.app.Dialog;
 import android.graphics.Color;
@@ -7,20 +7,20 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.iamkurtgoz.instalikedialog.R;
-import com.iamkurtgoz.instalikedialog.list.adapters.DAdapter;
+import com.iamkurtgoz.instalikedialog.init.InitListAndroid;
+import com.iamkurtgoz.instalikedialog.list.adapters.DAndroidAdapter;
 import com.iamkurtgoz.instalikedialog.list.models.DModel;
 
-public class Builder extends Dialog {
+public class BuilderListAndroid extends Dialog {
 
-    private Init initDialog;
+    private InitListAndroid initDialog;
     private DialogClickCallBack dialogClickCallBack;
 
-    public Builder(Init initDialog) {
+    public BuilderListAndroid(InitListAndroid initDialog) {
         super(initDialog.context);
         this.initDialog = initDialog;
         this.dialogClickCallBack = initDialog.getDialogClickCallBack();
@@ -36,16 +36,10 @@ public class Builder extends Dialog {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setCancelable(initDialog.getCancelable());
-        setContentView(R.layout.layout_instadialog);
+        setContentView(R.layout.layout_list_android);
 
-        ImageView imgTitleIcon = (ImageView) findViewById(R.id.layout_instadialog_imgTitleIcon);
-        ListView listView = (ListView) findViewById(R.id.layout_instadialog_listView);
-        TextView textTitle = (TextView) findViewById(R.id.layout_instadialog_textTitle);
-
-        imgTitleIcon.setVisibility(initDialog.isTitleIconActive() ? View.VISIBLE : View.GONE);
-        if (initDialog.isTitleIconActive()){
-            imgTitleIcon.setImageResource(initDialog.getTitleIconResource());
-        }
+        ListView listView = (ListView) findViewById(R.id.layout_list_android_listView);
+        TextView textTitle = (TextView) findViewById(R.id.layout_list_android_textTitle);
 
         textTitle.setText(initDialog.getTitle());
         textTitle.setTextColor(initDialog.getTextColor());
@@ -53,8 +47,8 @@ public class Builder extends Dialog {
         textTitle.setVisibility(initDialog.getTitleActive() ? View.VISIBLE : View.GONE);
 
 
-        DAdapter customAdapter = new DAdapter(initDialog, initDialog.getCustomData());
-        customAdapter.setClickCallBack(new DAdapter.ClickCallBack() {
+        DAndroidAdapter customAdapter = new DAndroidAdapter(initDialog, initDialog.getCustomData());
+        customAdapter.setClickCallBack(new DAndroidAdapter.ClickCallBack() {
             @Override
             public void onClickListener(DModel model, int position) {
                 if (dialogClickCallBack != null){

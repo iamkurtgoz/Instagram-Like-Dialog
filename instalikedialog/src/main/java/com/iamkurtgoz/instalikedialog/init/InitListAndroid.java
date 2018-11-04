@@ -1,32 +1,36 @@
-package com.iamkurtgoz.instalikedialog.main;
+package com.iamkurtgoz.instalikedialog.init;
 
 import android.content.Context;
 import android.view.Gravity;
 
 import com.iamkurtgoz.instalikedialog.R;
+import com.iamkurtgoz.instalikedialog.builder.BuilderDialogAndroid;
+import com.iamkurtgoz.instalikedialog.builder.BuilderListAndroid;
 import com.iamkurtgoz.instalikedialog.list.models.DModel;
 
-public class Init {
+public class InitListAndroid {
 
     public Context context;
     private Boolean isCancelable = true, isTitleActive = false;
     private String title = "";
-    private int textColor, textSize = 14, textGravity = Gravity.START, titleIconResource = R.drawable.instagram_icon_2;
-    private boolean titleIconActive = false, itemIconActive = false;
+    private int textColor, textSize = 14, textGravity = Gravity.START;
+    private boolean itemIconActive = false;
 
     private DModel[] customData;
-    private Builder.DialogClickCallBack dialogClickCallBack;
+    private BuilderListAndroid.DialogClickCallBack dialogClickCallBack;
 
-    public Init(Context context, DModel[] customData, Builder.DialogClickCallBack dialogClickCallBack){
+    public InitListAndroid(Context context, DModel[] customData){
         this.context = context;
         this.customData = customData;
-        this.dialogClickCallBack = dialogClickCallBack;
-
         //default text color.
         this.textColor = context.getResources().getColor(R.color.black);
     }
 
-    public Init setCancelable(Boolean cancelable) {
+    public InitListAndroid setDialogClickCallBack(BuilderListAndroid.DialogClickCallBack dialogClickCallBack) {
+        this.dialogClickCallBack = dialogClickCallBack;
+        return this;
+    }
+    public InitListAndroid setCancelable(Boolean cancelable) {
         isCancelable = cancelable;
         return this;
     }
@@ -39,7 +43,7 @@ public class Init {
         return isTitleActive;
     }
 
-    public Init setTitle(String title) {
+    public InitListAndroid setTitle(String title) {
         if (title != null){
             this.title = title;
             this.isTitleActive = true;
@@ -51,7 +55,7 @@ public class Init {
         return title;
     }
 
-    public Init setTextColor(int textColor) {
+    public InitListAndroid setTextColor(int textColor) {
         this.textColor = textColor;
         return this;
     }
@@ -60,7 +64,7 @@ public class Init {
         return textColor;
     }
 
-    public Init setTextSize(int textSize) {
+    public InitListAndroid setTextSize(int textSize) {
         this.textSize = textSize;
         return this;
     }
@@ -69,7 +73,7 @@ public class Init {
         return textSize;
     }
 
-    public Init setTextGravity(int textGravity) {
+    public InitListAndroid setTextGravity(int textGravity) {
         this.textGravity = textGravity;
         return this;
     }
@@ -78,7 +82,7 @@ public class Init {
         return textGravity;
     }
 
-    public Init setItemIconActive(boolean itemIconActive) {
+    public InitListAndroid setItemIconActive(boolean itemIconActive) {
         this.itemIconActive = itemIconActive;
         return this;
     }
@@ -87,29 +91,15 @@ public class Init {
         return itemIconActive;
     }
 
-    public boolean isTitleIconActive() {
-        return titleIconActive;
-    }
-
-    public Init setTitleIconResource(int titleIconResource) {
-        this.titleIconResource = titleIconResource;
-        this.titleIconActive = true;
-        return this;
-    }
-
-    public int getTitleIconResource() {
-        return titleIconResource;
-    }
-
     public DModel[] getCustomData() {
         return customData;
     }
 
-    public Builder.DialogClickCallBack getDialogClickCallBack() {
+    public BuilderListAndroid.DialogClickCallBack getDialogClickCallBack() {
         return dialogClickCallBack;
     }
 
     public void show() {
-        new Builder(this).show();
+        new BuilderListAndroid(this).show();
     }
 }

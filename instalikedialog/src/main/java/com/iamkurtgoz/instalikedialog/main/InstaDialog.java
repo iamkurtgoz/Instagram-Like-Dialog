@@ -3,9 +3,14 @@ package com.iamkurtgoz.instalikedialog.main;
 
 import android.content.Context;
 
+import com.iamkurtgoz.instalikedialog.builder.BuilderDialogAndroid;
+import com.iamkurtgoz.instalikedialog.builder.BuilderListAndroid;
+import com.iamkurtgoz.instalikedialog.init.InitDialogAndroid;
+import com.iamkurtgoz.instalikedialog.init.InitListAndroid;
 import com.iamkurtgoz.instalikedialog.list.models.DModel;
 
 public class InstaDialog {
+
 
     private Context context;
     private static InstaDialog instaDialog;
@@ -25,8 +30,11 @@ public class InstaDialog {
         this.context = context;
     }
 
+    public InitListAndroid androidList(Context context, DModel[] customData){
+        return new InitListAndroid(context, customData);
+    }
 
-    public Init init(DModel[] customData, Builder.DialogClickCallBack dialogClickCallBack){
-        return new Init(context, customData, dialogClickCallBack);
+    public InitDialogAndroid androidDialog(String title, String cancelButton, String confirmButton){
+        return new InitDialogAndroid(context, title, cancelButton, confirmButton);
     }
 }

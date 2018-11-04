@@ -10,10 +10,10 @@ import android.widget.TextView;
 
 import com.andexert.library.RippleView;
 import com.iamkurtgoz.instalikedialog.R;
+import com.iamkurtgoz.instalikedialog.init.InitListAndroid;
 import com.iamkurtgoz.instalikedialog.list.models.DModel;
-import com.iamkurtgoz.instalikedialog.main.Init;
 
-public class DAdapter extends ArrayAdapter<DModel> {
+public class DAndroidAdapter extends ArrayAdapter<DModel> {
 
     public ClickCallBack clickCallBack;
     public interface ClickCallBack{
@@ -24,13 +24,13 @@ public class DAdapter extends ArrayAdapter<DModel> {
         this.clickCallBack = clickCallBack;
     }
 
-    private Init initDialog;
+    private InitListAndroid initDialog;
     private final LayoutInflater inflater;
     private final Context context;
     private ViewHolder holder;
     private DModel[] customData;
 
-    public DAdapter(Init initDialog, DModel[] customData) {
+    public DAndroidAdapter(InitListAndroid initDialog, DModel[] customData) {
         super(initDialog.context,0, customData);
         this.initDialog = initDialog;
         this.context = initDialog.context;
