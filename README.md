@@ -19,7 +19,7 @@ maven { url 'https://jitpack.io' }
 ##### Step 2. Add the dependency
 ```java
 dependencies {
-implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.4'
+implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.5'
 }
 ```
 
@@ -62,8 +62,16 @@ Toast.makeText(MainActivity.this, "Confirm", Toast.LENGTH_SHORT).show();
 }
 }).show();
 ```
-
-
+### How to Use Android Progress Dialog
+```java
+//.setLottieRaw(R.raw.settings_loading) default settings_loading.json
+//lottie files url : https://www.lottiefiles.com/
+InstaDialog.with(MainActivity.this)
+                .progressDialog()
+                .setTitle("Wait")
+                .setTextColor(Color.BLACK)
+                .build().show();
+```
 
 ### Features
 
