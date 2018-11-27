@@ -1,12 +1,11 @@
 package com.iamkurtgoz.instalikedialog_sample;
 
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.iamkurtgoz.instalikedialog.builder.BuilderDialogAndroid;
@@ -16,7 +15,7 @@ import com.iamkurtgoz.instalikedialog.main.InstaDialog;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button button1, button2;
+    private Button button1, button2, button3;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         button1 = (Button) findViewById(R.id.activity_main_btnDialog1);
         button2 = (Button) findViewById(R.id.activity_main_btnDialog2);
+        button3 = (Button) findViewById(R.id.activity_main_btnDialog3);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -36,6 +36,12 @@ public class MainActivity extends AppCompatActivity {
                 openAndroidDialog();
             }
         });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openProgressDialog();
+            }
+        });
     }
 
     private void openAndroidListDialog(){
@@ -46,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         };
 
         InstaDialog.with(MainActivity.this)
-                .androidList(MainActivity.this, customData)
+                .androidList(customData)
                 .setDialogClickCallBack(new BuilderListAndroid.DialogClickCallBack() {
                     @Override
                     public void onDialogClickListener(DModel model, int position) {
@@ -75,6 +81,18 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Confirm", Toast.LENGTH_SHORT).show();
                     }
                 }).show();
+    }
+
+    /**
+     * default value R.raw.settings_loading
+     *
+     */
+    private void openProgressDialog(){
+        InstaDialog.with(MainActivity.this)
+                .progressDialog()
+                .setTitle("Wait")
+                .setTextColor(Color.BLACK)
+                .build().show();
     }
 
 }

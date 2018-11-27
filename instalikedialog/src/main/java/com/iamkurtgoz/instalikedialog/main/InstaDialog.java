@@ -7,6 +7,7 @@ import com.iamkurtgoz.instalikedialog.builder.BuilderDialogAndroid;
 import com.iamkurtgoz.instalikedialog.builder.BuilderListAndroid;
 import com.iamkurtgoz.instalikedialog.init.InitDialogAndroid;
 import com.iamkurtgoz.instalikedialog.init.InitListAndroid;
+import com.iamkurtgoz.instalikedialog.init.InitProgressDialog;
 import com.iamkurtgoz.instalikedialog.list.models.DModel;
 
 public class InstaDialog {
@@ -30,11 +31,15 @@ public class InstaDialog {
         this.context = context;
     }
 
-    public InitListAndroid androidList(Context context, DModel[] customData){
+    public InitListAndroid androidList(DModel[] customData){
         return new InitListAndroid(context, customData);
     }
 
     public InitDialogAndroid androidDialog(String title, String cancelButton, String confirmButton){
         return new InitDialogAndroid(context, title, cancelButton, confirmButton);
+    }
+
+    public InitProgressDialog progressDialog(){
+        return new InitProgressDialog(context);
     }
 }
