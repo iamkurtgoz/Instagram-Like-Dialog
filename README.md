@@ -19,7 +19,7 @@ maven { url 'https://jitpack.io' }
 ##### Step 2. Add the dependency
 ```java
 dependencies {
-implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.5'
+implementation 'com.github.iamkurtgoz:Instagram-Like-Dialog:1.0.6'
 }
 ```
 
@@ -66,6 +66,7 @@ Toast.makeText(MainActivity.this, "Confirm", Toast.LENGTH_SHORT).show();
 ```java
 //.setLottieRaw(R.raw.settings_loading) default settings_loading.json
 //lottie files url : https://www.lottiefiles.com/
+//setWithoutLottie(true) : only progress bar
 InstaDialog.with(MainActivity.this)
                 .progressDialog()
                 .setTitle("Wait")

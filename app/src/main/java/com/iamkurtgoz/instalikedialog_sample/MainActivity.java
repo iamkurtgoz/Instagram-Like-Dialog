@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
     private void openProgressDialog(){
         InstaDialog.with(MainActivity.this)
                 .progressDialog()
+                .setWithoutLottie(false)
                 .setTitle("Wait")
                 .setTextColor(Color.BLACK)
                 .build().show();

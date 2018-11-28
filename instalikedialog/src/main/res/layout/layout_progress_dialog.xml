@@ -19,8 +19,15 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:padding="5dp"
+            android:visibility="gone"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"/>
+
+        <ProgressBar
+            android:id="@+id/ayout_progress_dialog_progressBar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/layout_progress_dialog_textTitle"

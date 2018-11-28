@@ -9,7 +9,7 @@ import com.iamkurtgoz.instalikedialog.builder.BuilderProgressDialog;
 public class InitProgressDialog {
 
     private Context context;
-    private Boolean isCancelable = true;
+    private Boolean isCancelable = true, withoutLottie = false;
     private String title = "";
     private int textColor, textSize = 14;
     private int lottieRaw = R.raw.settings_loading, repeatCount = -1;
@@ -48,6 +48,11 @@ public class InitProgressDialog {
         return this;
     }
 
+    public InitProgressDialog setWithoutLottie(Boolean withoutLottie) {
+        this.withoutLottie = withoutLottie;
+        return this;
+    }
+
     public Boolean getCancelable() {
         return isCancelable;
     }
@@ -70,6 +75,10 @@ public class InitProgressDialog {
 
     public int getRepeatCount() {
         return repeatCount;
+    }
+
+    public Boolean getWithoutLottie() {
+        return withoutLottie;
     }
 
     public Context getContext() {

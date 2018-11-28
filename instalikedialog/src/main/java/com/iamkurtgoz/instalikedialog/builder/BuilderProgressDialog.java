@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -47,6 +48,7 @@ public class BuilderProgressDialog extends Dialog {
 
     private InitProgressDialog initProgressDialog;
     private LottieAnimationView lottieAnimationView;
+    private ProgressBar progressBar;
     private TextView textTitle;
 
     @Override
@@ -57,6 +59,7 @@ public class BuilderProgressDialog extends Dialog {
         setContentView(R.layout.layout_progress_dialog);
 
         lottieAnimationView = (LottieAnimationView) findViewById(R.id.layout_progress_dialog_lottieView);
+        progressBar = (ProgressBar) findViewById(R.id.ayout_progress_dialog_progressBar);
         textTitle = (TextView) findViewById(R.id.layout_progress_dialog_textTitle);
 
         textTitle.setText(initProgressDialog.getTitle());
@@ -66,10 +69,17 @@ public class BuilderProgressDialog extends Dialog {
             textTitle.setVisibility(View.GONE);
         }
 
-        if (initProgressDialog.getLottieRaw() != -1){
-            lottieAnimationView.setAnimation(initProgressDialog.getLottieRaw());
+        if (!initProgressDialog.getWithoutLottie()){
+            progressBar.setVisibility(View.GONE);
+            lottieAnimationView.setVisibility(View.VISIBLE);
+            if (initProgressDialog.getLottieRaw() != -1){
+                lottieAnimationView.setAnimation(initProgressDialog.getLottieRaw());
+            }
+            lottieAnimationView.setRepeatCount(initProgressDialog.getRepeatCount());
+        } else {
+            lottieAnimationView.setVisibility(View.GONE);
+            progressBar.setVisibility(View.VISIBLE);
         }
-        lottieAnimationView.setRepeatCount(initProgressDialog.getRepeatCount());
     }
 
 }
